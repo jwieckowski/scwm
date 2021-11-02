@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+import Layout from './components/Layout';
+import Dashboard from './components/Dashboard';
+import CriteriaSelection from './components/CriteriaSelection';
+import Weights from './components/Weights';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/prestudy' component={CriteriaSelection} />
+          <Route path='/weights' component={Weights} />
+          <Redirect to='/' />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
