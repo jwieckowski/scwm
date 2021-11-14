@@ -9,7 +9,7 @@ interface ContainerChildren {
 
 export default function MyContainer({ children }: ContainerChildren) {
     return (
-        <Container maxWidth='lg' style={{width: '100%', height: '90%'}}>
+        <Container maxWidth='lg' style={{width: '100%', height: '90%', overflow: 'auto'}}>
             { children }
         </Container>
     )
