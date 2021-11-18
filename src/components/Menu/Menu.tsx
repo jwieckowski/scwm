@@ -26,7 +26,8 @@ export default function Menu() {
     const urls: URL = {
       '/': 0,
       '/prestudy': 1,
-      '/weights': 2
+      '/weights': 2,
+      '/statistics': 3
     }
     setValue(urls[location.pathname] || 0)
   }, [location.pathname])
@@ -56,6 +57,12 @@ export default function Menu() {
           style={{textDecoration: 'none', color: 'inherit'}}
         >
             <Tab label="Istotność kryteriów" />
+        </Link>
+        <Link
+          to='/statistics'
+          style={{textDecoration: 'none', color: 'inherit'}}
+        >
+            <Tab label="Statystyki" />
         </Link>
       </Tabs>
     </Paper>

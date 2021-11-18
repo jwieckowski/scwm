@@ -1,9 +1,9 @@
-import React, { ReactChildren, ReactChild } from 'react'
+import React, { ReactChildren, ReactChild, ReactFragment } from 'react'
 
 import { Container } from '@material-ui/core'
 
 interface ContainerChildren {
-    children: ReactChildren | ReactChild | ReactChildren[] | ReactChild[]
+    children: ReactChildren | ReactChild | ReactChildren[] | ReactChild[] | ReactFragment
 }
 
 
