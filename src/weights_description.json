@@ -1,0 +1,74 @@
+{
+    "methods":
+    [
+        {
+            "id": 0,
+            "name": "Fixed point scoring",
+            "description": "Ta metoda"
+        },
+        {
+            "id": 1,
+            "name": "Ranking method",
+            "description": "Ta metoda"
+        },
+        {
+            "id": 2,
+            "name": "Smart method",
+            "description": "Ta metoda"
+        },
+        {
+            "id": 3,
+            "name": "Ratio weighting method",
+            "description": "Ta metoda"
+        },
+        {
+            "id": 4,
+            "name": "AHP method",
+            "description": "Ta metoda"
+        }
+    ],
+    "description": "Tym razem zadanie do wykonania będzie polegało na ocenie ważności każdego z kryteriów. Kryteria zostały wybrane przez Was jako grupę. ",
+    "criteria":
+    [
+        {
+            "id": 0,
+            "name": "Ilość kilometrów do centrum (Brama Portowa)"
+        },
+        {
+            "id": 1,
+            "name": "Ilość kilometrów do parku"
+        },
+        {
+            "id": 2,
+            "name": "Ilość kilometrów do lasu"
+        },
+        {
+            "id": 3,
+            "name": "Ilość kilometrów do jeziora"
+        },
+        {
+            "id": 4,
+            "name": "Ilość kilometrów do pracy"
+        },
+        {
+            "id": 6,
+            "name": "Ilość kilometrów do sklepu"
+        },
+        {
+            "id": 7,
+            "name": "Ilość kilometrów do obiektów sportowych"
+        },
+        {
+            "id": 8,
+            "name": "Dostęp do miejsc parkingowych"
+        },
+        {
+            "id": 9,
+            "name": "Opinia o dzielnicy"
+        },
+        {
+            "id": 10,
+            "name": "Ilość kilometrów do przystanku"
+        }
+    ]
+}
