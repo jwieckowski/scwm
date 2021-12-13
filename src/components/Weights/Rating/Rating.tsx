@@ -8,7 +8,7 @@ import {
 interface Props {
     activeIndex: number
     ratings: number[]
-    setRating: Dispatch<SetStateAction<[] | number[]>>
+    setRating: Dispatch<SetStateAction<number>>
 }
 
 export default function MyRating({ activeIndex, ratings, setRating }: Props) {
@@ -18,9 +18,7 @@ export default function MyRating({ activeIndex, ratings, setRating }: Props) {
 
     if (!newRating) return
 
-    let copy = [...ratings]
-    copy[activeIndex] = newRating
-    setRating(copy)
+    setRating(newRating)
   }
 
   return (

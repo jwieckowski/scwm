@@ -4,30 +4,30 @@
         {
             "id": 0,
             "name": "Fixed point scoring",
-            "description": "Ta metoda"
+            "description": "Metoda działa w ten sposób, że do rozdzielenia pomiędzy wszystkie kryteria jest 100 punktów. Oznacza to, że jeśli mamy 10 kryteriów, to oceniając każde z nich na 10 punktów uzyskamy w sumie 100 punktów. Jednak przypisanie każdemu kryterium tej samej ilości punktów oznacza, że każde z nich jest dla nas tak samo ważne przy wyborze lokalizacji mieszkania. Im mniejsza liczba punktów, tym kryterium jest mniej ważne. Analogicznie, im więcej punktów, tym kryterium jest ważniejsze. Przykładowo, jeśli ilości kilometrów do lasu damy 5 punktów, a ilości kilometrów do pracy 10 punktów, oznacza to że odległość do pracy jest dla nas 2 razy ważniejsza niż do lasu. Wykorzystaliśmy 15 punktów, więc na pozostałe 8 kryteriów mamy jeszcze rozdzielić 85 punktów. Poniżej wyświetlana jest suma punktów przypisana do kryteriów na chwilę obecną. W przypadku przypisania za małej lub za dużej ilości punktów, pod ich sumą będzie wyświetlać się komunikat co należy poprawić - zmniejszyć lub zwiększyć liczbę punktów. Po przypisaniu punktów do kryteriów, należy jeszcze ocenić wygodę korzystania z metody za pomocą formularza z gwiazdkami. Następnie można przejść do kolejnego kroku."
         },
         {
             "id": 1,
             "name": "Ranking method",
-            "description": "Ta metoda"
+            "description": "Ta metoda polega na rankingowaniu kryteriów. Oznacza to, że mając 10 kryteriów musimy przypisać im pozycję w rankingu, ustawiając je w taki sposób, by najważniejsze dla nas kryterium mialo numer 1, natomiast najmnniej ważne kryterium numer 10. Ważne jest to, że w tej metodzie kryetria nie moga mieć pozycji remisowych oraz nie powinniśmy pomijać żadnych wartości. Oznacza to że dla 4 kryteriów poprawnie zdefiniowany ranking to przykładowo 3, 2, 1, 4, a niepoprawnie zdefiniowany ranking to 4, 5, 2, 1, ponieważ pominęliśmy wartość 3, a wartości w rankingu powinny być od 1 do 4. Podobnie jak w przypadku poprzednim, nad nazwami kryteriów wyświetli się komunikat w przypadku, gdyby wypełnione wartości były błędne. Po ustaleniu rankingu kryteriów, należy ocenić wygodę korzystania z metody, a następnie można przejść dalej."
         },
         {
             "id": 2,
             "name": "Smart method",
-            "description": "Ta metoda"
+            "description": "W tej metodzie należy przypisać wartości do kryteriów w taki sposób, by najmniej ważne kryterium miało wartość 10. Z kolei kolejne wartości powinny rosnąć o 1 z każdym coraz ważniejszym kryterium. Przykładowo, mając 3 kryteria: ilość kilometrów do centrum, parku i lasu można byłoby przypisać im wartości w taki sposób: 12, 11, 10 - sposób poprawny ; 15 11 10 - sposób niepoprawny. Ponownie, w przypadku błędnego wypełnienia wartości dla kryteriów albo pominięcia wpisywanych wartości, poniżej pokaże się komunikat z informacją co należy poprawić. Po uzupełnieniu wartości, zaznaczamy gwiazdki oceniające wygodę korzystania z metody i idziemy dalej."
         },
         {
             "id": 3,
             "name": "Ratio weighting method",
-            "description": "Ta metoda"
+            "description": "W tej metodzie ponownie najmniej ważne kryterium ma przypisane wartość 10. Coraz ważniejsze według Was kryteria przy wyborze mieszkania powinny mieć przypisane wartości, które są wielokrotnościami liczby 10 i żadna kolejna wielokrotność nie powinna być pominięta. Czyli znowu, dla przykładu 3 kryteriów: ilość kilometrów do centrum, parku i lasu: 30 20 10 - przykład poprawny ; 50 20 10 - przykład niepoprawny. W przypadku błędnego wypełnienia pól, poniżej pokaże się komunikat z tym co należy poprawić. Standardowo, po wypełnieniu pól zaznaczamy gwiazdki oceniające tą metodę i idziemy do ostatniego kroku."
         },
         {
             "id": 4,
             "name": "AHP method",
-            "description": "Ta metoda"
+            "description": "Ostatni formularz do wypełnienia. Jak widzicie, jest on skonstruowany troche inaczej ze względu na inną zasadę działania metody. Waszym zadaniem jest określenie relacji pomiędzy konkretnymi kryteriami. Każde kryterium zostało oznaczone etykietą od C1 do C10. Pod tabelą z wartościami mamy pole do wpisywania wartości, w którym należy umieszczać liczby od 1 do 9. Przykład w celu wyjaśnienia: wartość startowa C1 do C2 - określamy ważność kryterium C1 - ilość kilometrów do centrum - względem kryterium C2 - ilość kilometrów do parku. Wartość 1 oznacza, że odległość do centrum i do parku są dla nas równoważne, wartość 9 z kolei że odległość do centrum jest dla nas ekstremalnie ważniejsza niż do parku. Mamy też wartości pośrednie, czyli przykładowo 3 - C1 jest mało ważniejsze niż C2, 5 - C1 jest wazniejsze niż C2, 7 - C1 jest mocno ważniejsze niż C2. Możemy też wpisywać wartości 2, 4, 6, 8 które są wartościami pośrednimi pomiędzy tymi opisanymi wcześniej. Po podaniu wartości i kliknięciu przycisku 'DALEJ', pokaże się nowa para kryteriów do porównania (dla drugiego kroku C1 do C3 i tak dalej...) a wpisana przez Was wartość pojawi się w Tabeli na przecięciu dwóch kryteriów. Prawa górna część tabeli będzie wypełniania się automatycznie wartościami wpisanymi przez Was w pole, natomiast dolna część będzie wypełniała się samoistnie w sposób 1 / wpisana przez was wartość - przykładowo dla wartości 2, na dole Tabeli na przecięciu 2 kryteriów pojawi się wartość 0.5. W przypadku nie wypełnienia wartości w polu lub wpisania za dużej albo za małej wartości, nad Tabelą pojawi sie komunikat co należy poprawić. Po uzupełnieniu całej Tabeli, oceniamy wygodę użycia tej metody i przesyłamy formularz. "
         }
     ],
-    "description": "Tym razem zadanie do wykonania będzie polegało na ocenie ważności każdego z kryteriów. Kryteria zostały wybrane przez Was jako grupę. ",
+    "description": "Tym razem zadanie do wykonania będzie polegało na ocenie ważności każdego z kryteriów. Kryteria zostały wybrane przez Was jako grupę. Spośród grupy wcześniej wybieranych kryteriów, 10 z nich zostało wybranych dalej i na ich podstawie będziecie dokonywać oceny ważności w kontekście wyboru lokalizacji mieszkania. Każde z kryteriów ma dla Was inne znaczenie, dlatego celem badania jest zobaczyć jaką wagę przykuwacie do każdego z nich. Formularz zawiera 5 metod, które pomoga Wam dokonać porównania kryteriów względem siebie i ustalić ich ważność. Każda metoda zawiera krótki opis zasady działania, dodatkowo wyświetlane będa komunikaty w przypadku, gdyby coś było wypełnione niezgodnie z regułami tych metod.",
     "criteria":
     [
         {

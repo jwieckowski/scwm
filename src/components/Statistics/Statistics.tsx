@@ -25,8 +25,8 @@ interface CriteriaDescription {
 }
 
 
-// const SERVER_URL = 'https://infinite-dusk-14350.herokuapp.com'
-const SERVER_URL = 'http://localhost:5000'
+const SERVER_URL = 'https://infinite-dusk-14350.herokuapp.com'
+// const SERVER_URL = 'http://localhost:5000'
 
 
 export default function Statistics() {

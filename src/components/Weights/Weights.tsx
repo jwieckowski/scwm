@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import react, { useEffect } from 'react';
 import {
     Box,
     Stepper,
@@ -14,7 +14,14 @@ import SMART from './Methods/SMART'
 import RWM from './Methods/RWM'
 import AHP from './Methods/AHP'
 import Rating from './Rating'
+import Modal from './Modal'
 
+import { useWeightsState } from '../../subscribers/weights';
+import { useFPS } from '../../subscribers/FPS';
+import { useRM } from '../../subscribers/RM';
+import { useSMART } from '../../subscribers/SMART';
+import { useRWM } from '../../subscribers/RWM';
+import { useAHP } from '../../subscribers/AHP';
 import weightsDescription from '../../weights_description.json'
 
 interface methodsComponents {
@@ -22,32 +29,52 @@ interface methodsComponents {
 }
 
 const methods: methodsComponents = {
-  0: <FPS criteria={weightsDescription.criteria} />,
-  1: <RM criteria={weightsDescription.criteria} />,
-  2: <SMART criteria={weightsDescription.criteria} />,
-  3: <RWM criteria={weightsDescription.criteria} />,
-  4: <AHP criteria={weightsDescription.criteria} />
+  0: <FPS criteria={weightsDescription.criteria} description={weightsDescription.methods[0].description}/>,
+  1: <RM criteria={weightsDescription.criteria} description={weightsDescription.methods[1].description}/>,
+  2: <SMART criteria={weightsDescription.criteria} description={weightsDescription.methods[2].description}/>,
+  3: <RWM criteria={weightsDescription.criteria} description={weightsDescription.methods[3].description}/>,
+  4: <AHP criteria={weightsDescription.criteria} description={weightsDescription.methods[4].description}/>
 }
 
 export default function Weights() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [methodsRatings, setMethodsRatings] = useState<number[] | []>(Array(weightsDescription.methods.length).fill(0))
+  const [{ activeStep, methodsRatings, weightsCorrect, message }, { nextStep, prevStep, changeRatings, setModalVisibility, postFormData }] = useWeightsState()
+
+  const [fps, ] = useFPS()
+  const [rm, ] = useRM()
+  const [smart, ] = useSMART()
+  const [rwm, ] = useRWM()
+  const [ahp, ] = useAHP()
+
+  useEffect(() => {
+    setModalVisibility(true)
+  }, [])
 
   const handleNext = () => {
-    if (methodsRatings[activeStep] === 0) return
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (methodsRatings[activeStep] === 0 || !weightsCorrect[activeStep]) return
+    nextStep()
+
+    if (activeStep === weightsDescription.methods.length - 1) {
+
+      const body = {
+        'fps': fps.weights,
+        'rm': rm.weights,
+        'smart': smart.weights,
+        'rwm': rwm.weights,
+        'ahp': ahp.matrix,
+        'rating': methodsRatings
+      }
+
+      postFormData(body)
+    }
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
+    prevStep()
   };
 
   return (
     <Box style={{ width: '100%', height: '100%', paddingTop: '15px', overflow: 'auto' }}>
+      <Modal description={weightsDescription.description} />
       <Stepper activeStep={activeStep}>
         {weightsDescription.methods.map((method, index) => {
           const stepProps: { completed?: boolean } = {};
@@ -62,14 +89,13 @@ export default function Weights() {
         })}
       </Stepper>
       {activeStep === weightsDescription.methods.length ? (
-        <Box>
+        <Box style={{ width: '60%', margin: '0 auto', paddingTop: '20px'}}>
+          <Typography>{message}</Typography>
           <Typography style={{ marginTop: 2, marginBottom: 1 }}>
-            Wszystkie kroki wypełnione
+            Wszystkie kroki wypełnione. Dziękuje Wam serdecznie za pomoc. Mam nadzieję,
+            że to wszystko, czego będę od Was potrzebował. Jeszcze raz dziękuję, jak obliczę wyniki
+            to na pewno się z Wami podzielę.
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
-          </Box>
         </Box>
       ) : (
         <Box style={{width: '90%', margin: '0 5%', marginBottom: '100px'}}>
@@ -78,9 +104,20 @@ export default function Weights() {
             <Rating
               activeIndex={activeStep}
               ratings={methodsRatings}
-              setRating={setMethodsRatings}
+              setRating={changeRatings}
             />
           </Box>
+          <Box>
+            {
+              methodsRatings[activeStep] === 0 && !weightsCorrect[activeStep]
+                ? 'Należy wypełnić wagi i ocenić metodę'
+                : methodsRatings[activeStep] === 0
+                  ? 'Należy ocenić metodę'
+                  : !weightsCorrect[activeStep]
+                    ? 'Należy wypełnić wagi'
+                    : 'Można przejść do nastepnego kroku'
+            }
+            </Box>
           <Box style={{ display: 'flex', flexDirection: 'row', paddingTop: 2 }}>
             <Button
               color="inherit"
@@ -88,11 +125,11 @@ export default function Weights() {
               onClick={handleBack}
               style={{ marginRight: 1 }}
             >
-              Back
+              Wstecz
             </Button>
             <Box style={{ flex: '1 1 auto' }} />
               <Button onClick={handleNext}>
-                {activeStep === weightsDescription.methods.length - 1 ? 'Finish' : 'Next'}
+                {activeStep === weightsDescription.methods.length - 1 ? 'Prześlij' : 'Dalej'}
               </Button>
           </Box>
         </Box>

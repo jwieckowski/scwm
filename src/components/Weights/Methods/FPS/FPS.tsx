@@ -5,13 +5,17 @@ import {
     TextField
 } from '@material-ui/core';
 
+import { useFPS } from '../../../../subscribers/FPS'
+import { useWeightsState } from '../../../../subscribers/weights'
+
 interface Criteria {
     id: number
     name: string
 }
 
-interface CriteriaArray {
+interface Props {
     criteria: Criteria[]
+    description: string
 }
 
 const WEIGHTS_MESSAGE = {
@@ -21,45 +25,28 @@ const WEIGHTS_MESSAGE = {
     3: ''
 }
 
-export default function FPS({ criteria }: CriteriaArray) {
-    const [weights, setWeights] = useState<number[] | []>([])
+export default function FPS({ criteria, description }: Props) {
+    const [{ weights, sum }, { changeWeights, calculateSum, validateInput }] = useFPS()
+    const [, { changeWeightsCorrectness }] = useWeightsState()
     const [message, setMessage] = useState<string>('')
-    const [sum, setSum] = useState<number>(0)
 
     useEffect(() => {
-        setWeights(Array(Object.keys(criteria).length).fill(0))
-    }, [])
+        calculateSum()
 
-    useEffect(() => {
-        const currentSum = sumWeights(weights)
-        setSum(currentSum)
-
-        const status = checkSumWeights(currentSum, weights)
+        const status = validateInput()
         setMessage(WEIGHTS_MESSAGE[status])
+        changeWeightsCorrectness(status)
     }, [weights])
 
     const onChangeWeight = (e: react.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
-        setWeights(weights.map((w, idx) => idx === index ? parseInt(e.target.value) : w))
+        changeWeights(e.target.value, index)
     }
 
-    const sumWeights = (arr: number[]) => {
-        if (arr.length === 0) return 0
-        const sum = (arr as number[]).reduce(function(sum: number, value: number) { return sum + value})
-        return isNaN(sum) ? 0 : sum
-    }
-
-    const checkSumWeights = (sum: number, weights: number[]) => {
-        if (weights.some(weight => weight === 0)) return 3
-
-        // 0 - equal 100
-        // 1 - too low
-        // 2 - too much
-        return sum === 100 ? 0 : sum < 100 ? 1 : 2
-    }
 
     return (
         <Box style={{padding: '20px 0'}}>
-            <Typography style={{padding: '10px 0'}}>Fixed Point Scoring metoda input - Suma wag: {sum} </Typography>
+            <Typography style={{padding: '10px 0'}}>{description}</Typography>
+            <Typography style={{padding: '10px 0'}}>Suma wag: {sum} </Typography>
             <Typography style={{padding: '10px 0'}}>{message}</Typography>
             {Object.keys(criteria).map((key, index) => {
               return (

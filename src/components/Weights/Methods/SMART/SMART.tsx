@@ -5,13 +5,17 @@ import {
     TextField
 } from '@material-ui/core';
 
+import { useSMART } from '../../../../subscribers/SMART'
+import { useWeightsState } from '../../../../subscribers/weights'
+
 interface Criteria {
     id: number
     name: string
 }
 
-interface CriteriaArray {
+interface Props {
     criteria: Criteria[]
+    description: string
 }
 
 const WEIGHTS_MESSAGE = {
@@ -21,38 +25,25 @@ const WEIGHTS_MESSAGE = {
     3: ''
 }
 
-export default function SMART({ criteria }: CriteriaArray) {
-    const [weights, setWeights] = useState<number[] | []>([])
+export default function SMART({ criteria, description }: Props) {
+    const [{ weights }, { changeWeights, validateInput } ] = useSMART()
+    const [, { changeWeightsCorrectness }] = useWeightsState()
     const [message, setMessage] = useState<string>('')
 
-    useEffect(() => {
-        setWeights(Array(Object.keys(criteria).length).fill(0))
-    }, [])
 
     useEffect(() => {
-        const status = validateInputWeights(weights)
+        const status = validateInput()
         setMessage(WEIGHTS_MESSAGE[status])
+        changeWeightsCorrectness(status)
     }, [weights])
 
     const onChangeWeight = (e: react.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
-        setWeights(weights.map((w, idx) => idx === index ? parseInt(e.target.value) : w))
-    }
-
-    const isValueRepeated = (arr: number[]) => {
-        return arr.length !== new Set(arr).size
-    }
-
-    const validateInputWeights = (weights: number[]) => {
-        if (weights.some(weight => weight === 0)) return 3
-        if (isValueRepeated(weights)) return 2
-        if (weights.some(weight => weight < 10)) return 1
-
-        return 0
+        changeWeights(e.target.value, index)
     }
 
     return (
         <Box style={{padding: '20px 0'}}>
-            <Typography style={{padding: '10px 0'}}>SMART metoda input</Typography>
+            <Typography style={{padding: '10px 0'}}>{description}</Typography>
             <Typography style={{padding: '10px 0'}}>{message}</Typography>
             {Object.keys(criteria).map((key, index) => {
               return (
