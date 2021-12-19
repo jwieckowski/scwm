@@ -43,10 +43,9 @@ export default function RM({ criteria, description }: Props) {
     return (
         <Box style={{padding: '20px 0'}}>
                 <Typography style={{padding: '10px 0'}}>{description}</Typography>
-            <Typography style={{padding: '10px 0'}}>{message}</Typography>
             {Object.keys(criteria).map((key, index) => {
-              return (
-                <Box style={{display: 'flex', alignItems: 'center', width: '100%'}} key={index}>
+                return (
+                    <Box style={{display: 'flex', alignItems: 'center', width: '100%'}} key={index}>
                     <Typography style={{width: '70%', paddingRight: '20px'}}>{criteria[parseInt(key)].name}</Typography>
                     <TextField
                       type="number"
@@ -58,6 +57,7 @@ export default function RM({ criteria, description }: Props) {
                 </Box>
               )
             })}
+            <Typography style={{padding: '10px 0', fontWeight: 'bold', color: validateInput() ? 'red' : 'inherit'}}>{message}</Typography>
         </Box>
     )
 }

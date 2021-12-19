@@ -17,34 +17,39 @@ for (let i = 0; i < 10; i++) {
   }
 }
 
-console.log(initialPairs[44]);
-
 const Store = createStore({
   // value of the store on initialisation
   initialState: {
     criteriaAmount: 10,
     matrix: initialMatrix,
     pairs: initialPairs,
-    compareValue: 0,
+    compareValue: "",
     currentPair: 0,
+    betterCriterion: "",
   },
   // actions that trigger store mutation
   actions: {
     comparePair:
       () =>
       ({ setState, getState }) => {
+        const value =
+          +getState().betterCriterion === 0
+            ? getState().compareValue
+            : 1 / getState().compareValue;
+
         let copy = [...getState().matrix];
         copy[getState().pairs[getState().currentPair][0]][
           getState().pairs[getState().currentPair][1]
-        ] = getState().compareValue;
+        ] = value;
         copy[getState().pairs[getState().currentPair][1]][
           getState().pairs[getState().currentPair][0]
-        ] = +(1 / getState().compareValue).toFixed(3);
+        ] = 1 / value.toFixed(3);
 
         setState({
           matrix: copy,
           currentPair: getState().currentPair + 1,
-          compareValue: 0,
+          compareValue: "",
+          betterCriterion: "",
         });
       },
     setCompareValue:
@@ -52,6 +57,13 @@ const Store = createStore({
       ({ setState }) => {
         setState({
           compareValue: value,
+        });
+      },
+    setBetterCriterion:
+      (criterion) =>
+      ({ setState }) => {
+        setState({
+          betterCriterion: criterion,
         });
       },
   },

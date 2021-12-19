@@ -29,7 +29,8 @@ const Store = createStore({
     validateInput:
       () =>
       ({ getState }) => {
-        if (getState().weights.some((weight) => weight === 0)) return 3;
+        if (getState().weights.some((weight) => weight === 0)) return 4;
+        if (getState().weights.some((weight) => weight < 0)) return 3;
 
         // 0 - equal 100
         // 1 - too low

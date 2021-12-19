@@ -38,7 +38,7 @@ export default function Matrix({criteriaAmount, matrix}: props) {
               </TableCell>
               {Array(criteriaAmount).fill(0).map((col, index2) => (
                 <TableCell component="th" key={index+index2}>
-                  {matrix[index][index2]}
+                  {matrix[index][index2].toFixed(2)}
                 </TableCell>
               ))}
               </TableRow>

@@ -23,7 +23,7 @@ export default function MyRating({ activeIndex, ratings, setRating }: Props) {
 
   return (
     <Box>
-      <Typography component="legend">Ocena wygody korzystania z metody</Typography>
+      <Typography component="legend">Ocena trudności korzystania z metody</Typography>
       <Typography>1 gwiazdka - trudna, 5 gwiazdek - łatwa</Typography>
       <Rating
         name="method-rating"

@@ -19,10 +19,11 @@ interface Props {
 }
 
 const WEIGHTS_MESSAGE = {
-    0: 'Suma wag jest poprawna',
-    1: 'Suma wag jest mniejsza niż 100',
-    2: 'Suma wag jest większa niż 100',
-    3: ''
+    0: 'Suma punktów jest poprawna',
+    1: 'Suma punktów jest mniejsza niż 100',
+    2: 'Suma punktów jest większa niż 100',
+    3: 'Nie można przypisać ujemnych punktów do kryterium',
+    4: ''
 }
 
 export default function FPS({ criteria, description }: Props) {
@@ -46,12 +47,10 @@ export default function FPS({ criteria, description }: Props) {
     return (
         <Box style={{padding: '20px 0'}}>
             <Typography style={{padding: '10px 0'}}>{description}</Typography>
-            <Typography style={{padding: '10px 0'}}>Suma wag: {sum} </Typography>
-            <Typography style={{padding: '10px 0'}}>{message}</Typography>
             {Object.keys(criteria).map((key, index) => {
-              return (
-                <Box style={{display: 'flex', alignItems: 'center', width: '100%'}} key={index}>
-                    <Typography style={{width: '70%', paddingRight: '20px'}}>{criteria[parseInt(key)].name}</Typography>
+                return (
+                    <Box style={{display: 'flex', alignItems: 'center', width: '100%'}} key={index}>
+                        <Typography style={{width: '70%', paddingRight: '20px'}}>{criteria[parseInt(key)].name}</Typography>
                     <TextField
                       type="number"
                       variant="outlined"
@@ -62,6 +61,8 @@ export default function FPS({ criteria, description }: Props) {
                 </Box>
               )
             })}
+            <Typography style={{padding: '10px 0'}}>Suma wag: {sum} </Typography>
+            <Typography style={{padding: '10px 0', fontWeight: 'bold', color: validateInput() ? 'red' : 'inherit'}}>{message}</Typography>
         </Box>
     )
 }
