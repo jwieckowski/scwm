@@ -61,7 +61,7 @@ export default function FPS({ criteria, description }: Props) {
                 </Box>
               )
             })}
-            <Typography style={{padding: '10px 0'}}>Suma wag: {sum} </Typography>
+            <Typography style={{padding: '10px 0', marginTop: '20px', borderTop: '2px solid grey'}}>Suma wag: {sum} </Typography>
             <Typography style={{padding: '10px 0', fontWeight: 'bold', color: validateInput() ? 'red' : 'inherit'}}>{message}</Typography>
         </Box>
     )

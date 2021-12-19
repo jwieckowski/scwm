@@ -52,7 +52,7 @@ export default function BasicModal({ description }: Props) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Wstęp przed wypełnieniem formularza
           </Typography>
-          <Typography style={{ marginTop: '10px' }}>{message}</Typography>
+          <Typography style={{ marginTop: '10px', color: 'red' }}>{message}</Typography>
           <TextField variant="outlined" label="Imię" onChange={handleInputChange} style={{ marginBottom: '20px'}}/>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {description}

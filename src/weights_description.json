@@ -3,7 +3,7 @@
         {
             "id": 0,
             "name": "Fixed point scoring",
-            "description": "Należy rozdzielić 100 punktów pomiędzy wszystkie kryteria. Im większa liczba punktów przydzielona do danego kryterium, tym jest ono ważniejsze. Poniżej pod listą kryteriow wyświetlana jest suma punktów obecnie wpisana w pola, by ułatwić liczenie już wpisanych wartości."
+            "description": "Należy rozdzielić 100 punktów pomiędzy wszystkie kryteria. Im większa liczba punktów przydzielona do danego kryterium, tym jest ono ważniejsze. Każde kryterium musi mieć przypisaną wartość. Poniżej pod listą kryteriow wyświetlana jest suma punktów obecnie wpisana w pola, by ułatwić liczenie już wpisanych wartości."
         },
         {
             "id": 1,
