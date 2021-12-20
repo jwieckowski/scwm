@@ -96,44 +96,51 @@ export default function AHP({ criteria, description }: Props) {
             />
             {
                 currentPair !== 45 &&
-                (<Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
-                    <Typography style={{paddingRight: '20px', borderRight: '2px solid grey'}}>C{pairs[currentPair][0]+1} i C{pairs[currentPair][1]+1}</Typography>
-                    <Typography style={{padding: '0 20px'}}>Ważniejsze kryterium</Typography>
-                    <FormControl style={{width: '100px', marginRight: '10px'}}>
-                        <Select
-                            id="criteria-AHP-value"
-                            value={betterCriterion}
-                            onChange={handleCriteriaChange}
-                        >
-                            <MenuItem value={0}>C{pairs[currentPair][0]+1}</MenuItem>
-                            <MenuItem value={1}>C{pairs[currentPair][1]+1}</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <Typography style={{padding: '0 20px', borderLeft: '2px solid grey'}}>Relacja</Typography>
-                    <FormControl style={{width: '200px'}}>
-                        <Select
-                            id="criteria-AHP-value"
-                            value={compareValue}
-                            onChange={handleValueChange}
-                        >
-                            {
-                                Object.keys(WEIGHTS_DICT).map((key: string, idx: number) => {
-                                    return (
-                                        <MenuItem key={idx} value={+key}>{WEIGHTS_DICT[+key]}</MenuItem>
-                                        )
-                                    })
-                                }
+                (<Box style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', width: '100%'}}>
+                    <Box style={{width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '10px'}}>
+                        <Typography style={{width: "50%", textAlign: 'center'}}>C{pairs[currentPair][0]+1} - {criteria[pairs[currentPair][0]].name}</Typography>
+                        <Typography style={{width: "50%", textAlign: 'center'}}>C{pairs[currentPair][1]+1} - {criteria[pairs[currentPair][1]].name}</Typography>
+                    </Box>
+                    <Box style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', paddingBottom: '10px'}}>
+                        <Typography>Ważniejsze kryterium</Typography>
+                        <FormControl style={{width: '100px'}}>
+                            <Select
+                                id="criteria-AHP-value"
+                                value={betterCriterion}
+                                onChange={handleCriteriaChange}
+                            >
+                                <MenuItem value={0}>C{pairs[currentPair][0]+1}</MenuItem>
+                                <MenuItem value={1}>C{pairs[currentPair][1]+1}</MenuItem>
                             </Select>
-                    </FormControl>
-                    <Button
-                        variant='contained'
-                        size='medium'
-                        color='primary'
-                        style={{margin: '0 10px', padding: '10px 5px'}}
-                        onClick={handlePairComparison}
-                    >
-                        DALEJ
-                    </Button>
+                        </FormControl>
+                        <Typography>Relacja</Typography>
+                        <FormControl style={{width: '150px'}}>
+                            <Select
+                                id="criteria-AHP-value"
+                                value={compareValue}
+                                onChange={handleValueChange}
+                            >
+                                {
+                                    Object.keys(WEIGHTS_DICT).map((key: string, idx: number) => {
+                                        return (
+                                            <MenuItem key={idx} value={+key}>{WEIGHTS_DICT[+key]}</MenuItem>
+                                            )
+                                        })
+                                    }
+                                </Select>
+                        </FormControl>
+                    </Box>
+                    <Box>
+                        <Button
+                            variant='contained'
+                            size='medium'
+                            color='primary'
+                            style={{margin: '0 10px', padding: '10px 5px'}}
+                            onClick={handlePairComparison}
+                        >
+                            DALEJ
+                        </Button>
+                    </Box>
                 </Box>)
             }
             <Typography style={{padding: '10px 0', fontWeight: 'bold', color: (betterCriterion === "" || compareValue === "") ? 'red' : 'inherit'}}>{message}</Typography>
