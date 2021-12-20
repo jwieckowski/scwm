@@ -1,94 +1,93 @@
 {
-    "criteria":
-    [
+    "criteria": [
         {
             "id": 0,
-            "name": "Ilość kilometrów do centrum (Brama Portowa)",
+            "name": "Liczba kilometrów do centrum (Brama Portowa)",
             "description": "Za punkt centralny uznałem Bramę Portową. Jest to miejsce, z którego możemy wyruszyć w każdą stronę Szczecina, przy zachowaniu stosunkowo równych odległości pomiędzy nimi. Im bliżej centrum się znajdujemy, tym bliżej mamy do wielu miejsc, lecz może się to wiązać z większym hałasem dookoła."
         },
         {
             "id": 1,
-            "name": "Ilość kilometrów do drogi krajowej",
+            "name": "Liczba kilometrów do drogi krajowej",
             "description": "Ten czynnik ma wpływ na hałas dookoła miejsca zamieszkania, oraz wpływa na konieczność pokonania większej odległości w przypadku wyjazdów w głąd kraju bądź za granicę."
         },
         {
             "id": 2,
-            "name": "Ilość kilometrów do parku",
+            "name": "Liczba kilometrów do parku",
             "description": "Park może okazać się miejscem do wyjścia na świeże powietrze, bądź na spacer z psem."
         },
         {
             "id": 3,
-            "name": "Ilość kilometrów do lasu",
+            "name": "Liczba kilometrów do lasu",
             "description": "Las, podobnie jak park może być dobrym rozwiązaniem na spacery z psem, wyjściem na grzyby, czy do aktywności fizycznej na świeżym powietrzu."
         },
         {
             "id": 4,
-            "name": "Ilość kilometrów do jeziora",
+            "name": "Liczba kilometrów do jeziora",
             "description": "Dostępność do jeziora daje możliwości pływania na wodach otwartych, opalania i kapania się w porze letniej, czy morsowania w porze zimowej."
         },
         {
             "id": 5,
-            "name": "Ilość kilometrów do przedszkola",
+            "name": "Liczba kilometrów do przedszkola",
             "description": "Bliskość przedszkola w kontekście dowożenia dzieci."
         },
         {
             "id": 6,
-            "name": "Ilość kilometrów do szkoły podstawowej",
+            "name": "Liczba kilometrów do szkoły podstawowej",
             "description": "Podobnie jak w kontekście przedszkola."
         },
         {
             "id": 7,
-            "name": "Ilość kilometrów do liceum",
+            "name": "Liczba kilometrów do liceum",
             "description": "Tutaj dziecko jest już większe, więc jest możliwość, że będzie jeździło samo."
         },
         {
             "id": 8,
-            "name": "Ilość kilometrów do zakładów przemysłowych",
+            "name": "Liczba kilometrów do zakładów przemysłowych",
             "description": "Zakłady przemysłowe, które często wiąża się z hałasem i wydzielaniem szkodliwych środków do atmosfery."
         },
         {
             "id": 9,
-            "name": "Ilość kilometrów do pracy",
+            "name": "Liczba kilometrów do pracy",
             "description": "Czas codziennych dojazdów do miejsca pracy, przemieszczanie się w korkach."
         },
         {
             "id": 10,
-            "name": "Ilość kilometrów do piekarni",
+            "name": "Liczba kilometrów do piekarni",
             "description": "Dostęp do świeżego pieczywa, wypieków, ciast."
         },
         {
             "id": 11,
-            "name": "Ilość kilometrów do centrum handlowego",
+            "name": "Liczba kilometrów do centrum handlowego",
             "description": "W przypadku wyjścia na zakupy"
         },
         {
             "id": 12,
-            "name": "Ilość kilometrów do ośrodków kultury",
+            "name": "Liczba kilometrów do ośrodków kultury",
             "description": "Ośrodki kultury takie jak Teatr, Filharmonia, Muzeum"
         },
         {
             "id": 13,
-            "name": "Ilość kilometrów do sklepu",
+            "name": "Liczba kilometrów do sklepu",
             "description": "Sklepy typu Żabka, Lidl, Biedronka"
         },
         {
             "id": 14,
-            "name": "Ilość kilometrów do kina",
+            "name": "Liczba kilometrów do kina",
             "description": "Należy zastanowić się czy odległość od kina i wyjścia na filmy są częste w codziennym życiu"
         },
         {
             "id": 15,
-            "name": "Ilość kilometrów do restauracji",
-            "description": "Należy zastanowić się czy ilość wyjść na jedzenie po za domem w miesiącu jest znaczna."
+            "name": "Liczba kilometrów do restauracji",
+            "description": "Należy zastanowić się czy liczba wyjść na jedzenie po za domem w miesiącu jest znaczna."
         },
         {
             "id": 16,
-            "name": "Ilość kilometrów do obiektów sportowych",
+            "name": "Liczba kilometrów do obiektów sportowych",
             "description": "W przypadku uczęszczania na treningi, czas dojazdów do obiektów sportowych takich jak siłownia, basen, boisko"
         },
         {
             "id": 17,
-            "name": "Ilość kilometrów do stacji benzynowej",
+            "name": "Liczba kilometrów do stacji benzynowej",
             "description": "Dodatkowy dystans od miejsca zamieszkania w celu zatankowania samochodu"
         },
         {
@@ -103,7 +102,7 @@
         },
         {
             "id": 20,
-            "name": "Ilość kilometrów do przystanku",
+            "name": "Liczba kilometrów do przystanku",
             "description": "Przystanki autobusowe i tramwajowe są ułatwieniem przemieszczania się dla osób, które nie posiadają samochodu, lub potrzebują zostawić samochód w miejscu zamieszkania, a nie chcą wydawać pieniędzy na taksówkę."
         }
     ],
