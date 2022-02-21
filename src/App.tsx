@@ -12,11 +12,11 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route path='/' exact component={Dashboard} />
-          <Route path='/prestudy' component={CriteriaSelection} />
-          <Route path='/weights' component={Weights} />
-          <Route path='/statistics' component={Statistics} />
-          <Redirect to='/' />
+          <Route path='/scwm' exact component={Dashboard} />
+          <Route path='/scwm/prestudy' component={CriteriaSelection} />
+          <Route path='/scwm/weights' component={Weights} />
+          <Route path='/scwm/statistics' component={Statistics} />
+          <Redirect to='/scwm' />
         </Switch>
       </Layout>
     </BrowserRouter>

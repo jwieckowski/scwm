@@ -3,7 +3,8 @@ import axios, { AxiosResponse } from 'axios'
 import MyContainer from '../MyContainer'
 import {
     Typography,
-    Grid
+    Grid,
+    CircularProgress
 } from '@material-ui/core/'
 
 import criteriaAll from '../../criteria_description.json'
@@ -65,20 +66,29 @@ export default function Statistics() {
 
     return (
         <MyContainer>
-            <Grid style={{width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '10px'}}>
-                <Typography variant='h5'>Wyniki wyboru kryteriów</Typography>
-            </Grid>
-            <Grid style={{display: 'flex', flexDirection: 'column', width: '100%', padding: "2% 10%"}}>
-                {
-                    criteria?.map(crit => {
-                        return (
-                            <Grid style={{display: 'flex', width: '100%', justifyContent: 'center', padding: "2px 0"}}>
-                                <Typography style={{width: '30%'}}>{crit.name}</Typography>
-                                <Typography>{results[crit.id]}</Typography>
-                            </Grid>
-                    )
-                })}
-            </Grid>
+            {
+                Object.keys(results).length === 0 ?
+                    <Grid style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <CircularProgress size='40px' />
+                    </Grid>
+                :
+                    <>
+                        <Grid style={{width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '50px'}}>
+                            <Typography variant='h5'>Wyniki wyboru kryteriów</Typography>
+                        </Grid>
+                        <Grid style={{display: 'flex', flexDirection: 'column', width: '100%', padding: "2% 10%"}}>
+                            {
+                                criteria?.map(crit => {
+                                    return (
+                                        <Grid style={{display: 'flex', width: '100%', justifyContent: 'center', padding: "4px 0"}}>
+                                            <Typography style={{width: '70%', marginRight: '10px'}}>{crit.name}</Typography>
+                                            <Typography>{results[crit.id]}</Typography>
+                                        </Grid>
+                                )
+                            })}
+                        </Grid>
+                    </>
+            }
         </MyContainer>
     )
 }

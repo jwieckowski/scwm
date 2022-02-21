@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import {
+  Paper,
+  Tabs,
+  Tab
+} from '@material-ui/core';
 
 import { Link } from 'react-router-dom'
 
@@ -24,10 +26,10 @@ export default function Menu() {
 
   useEffect(() => {
     const urls: URL = {
-      '/': 0,
-      '/prestudy': 1,
-      '/weights': 2,
-      '/statistics': 3
+      '/scwm': 0,
+      '/scwm/prestudy': 1,
+      '/scwm/weights': 2,
+      '/scwm/statistics': 3
     }
     setValue(urls[location.pathname] || 0)
   }, [location.pathname])
@@ -41,25 +43,25 @@ export default function Menu() {
         centered
       >
         <Link
-          to='/'
+          to='/scwm'
           style={{textDecoration: 'none', color: 'inherit'}}
         >
             <Tab label="Strona główna" />
         </Link>
         <Link
-          to='/prestudy'
+          to='/scwm/prestudy'
           style={{textDecoration: 'none', color: 'inherit'}}
         >
             <Tab label="Wybór kryteriów" />
         </Link>
         <Link
-          to='/weights'
+          to='/scwm/weights'
           style={{textDecoration: 'none', color: 'inherit'}}
         >
             <Tab label="Istotność kryteriów" />
         </Link>
         <Link
-          to='/statistics'
+          to='/scwm/statistics'
           style={{textDecoration: 'none', color: 'inherit'}}
         >
             <Tab label="Statystyki" />
